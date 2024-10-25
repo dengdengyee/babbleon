@@ -19,7 +19,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Environment :: Console",
 ]
-include = ["templates/babbleon.json", "templates/reference.toml"]
+include = ["templates/*", "prompts/*"]
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -27,6 +27,7 @@ click = "^8.1.7"
 pyyaml = "^6.0.2"
 anthropic = "^0.37.1"
 toml = "^0.10.2"
+importlib-resources = "^6.4.5"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
