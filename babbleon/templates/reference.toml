@@ -1,0 +1,11 @@
+[tabs]
+# The bottom tab names
+home = "Home"
+about = "About"
+settings = "Settings"
+
+[home.hero]
+title = "Welcome to babbleon"
+description = """Hi
+This is multiline text
+"""
