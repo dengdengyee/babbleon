@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "babbleon"
+version = "0.1.1"
+description = "babbleon - Manage your app translations with ease."
+authors = ["mh <akic4op4@gmail.com>"]
+readme = "README.md"
+license = "MIT" # Add this - choose appropriate license
+repository = "https://github.com/dengdengyee/babbleon" # Add your repo URL
+keywords = [
+    "translation",
+    "i18n",
+    "cli",
+    "localization",
+] # Add relevant keywords
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Localization",
+    "Programming Language :: Python :: 3.12",
+    "Environment :: Console",
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+click = "^8.1.7"
+pyyaml = "^6.0.2"
+anthropic = "^0.37.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+black = "^24.10.0"
+isort = "^5.13.2"
+mypy = "^1.13.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+babbleon = "babbleon:cli" # Make sure this points to your actual entry point
