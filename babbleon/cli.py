@@ -65,7 +65,7 @@ def generate(ctx):
     """Generate the translation files for the target languages"""
     config = ctx.obj
     reference_file_content = config.get_reference_file().read_text(encoding="utf-8")
-    translator = BabbleonTranslator(reference_file_content)
+    translator = BabbleonTranslator(reference_file_content, config.get_output_format())
     output_dir = config.get_output_dir()
     output_dir.mkdir(parents=True, exist_ok=True)
     for language in config.get_target_languages():
