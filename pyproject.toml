@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "babbleon"
-version = "0.1.2"
+version = "0.1.3"
 description = "babbleon - Manage your app translations with ease."
 authors = ["mh <akic4op4@gmail.com>"]
 readme = "README.md"
