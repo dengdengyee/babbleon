@@ -64,16 +64,17 @@ def init():
 def generate(ctx):
     """Generate the translation files for the target languages"""
     config = ctx.obj
+    output_format = config.get_output_format()
     reference_file_content = config.get_reference_file().read_text(encoding="utf-8")
-    translator = BabbleonTranslator(reference_file_content, config.get_output_format())
+    translator = BabbleonTranslator(reference_file_content, output_format)
     output_dir = config.get_output_dir()
     output_dir.mkdir(parents=True, exist_ok=True)
     for language in config.get_target_languages():
         print(f"Translating to {language}")
-        local_json_string = translator.translate(language)
-        local_json_file = output_dir.joinpath(f"{language}.json")
-        with open(local_json_file, "w", encoding="utf-8") as dest:
-            dest.write(local_json_string)
+        locale_string = translator.translate(language)
+        locale_file = output_dir.joinpath(f"{language}.{output_format}")
+        with open(locale_file, "w", encoding="utf-8") as dest:
+            dest.write(locale_string)
 
 
 if __name__ == "__main__":
