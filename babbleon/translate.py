@@ -30,7 +30,9 @@ class BabbleonTranslator:
 
     def get_system_message(self) -> list[dict]:
         reference_prompt = self.get_reference_prompt()
-        static_prompt_path = files("babbleon.prompts").joinpath("translator_json.md")
+        static_prompt_path = files("babbleon.prompts").joinpath(
+            f"translator_{self.output_format}.md"
+        )
         with open(static_prompt_path, "r", encoding="utf-8") as src:
             static_prompts = src.read()
         return [
