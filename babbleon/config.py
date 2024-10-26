@@ -13,5 +13,8 @@ class BabbleonConfig:
     def get_output_dir(self) -> Path:
         return Path(self.config["output"])
 
+    def get_output_format(self) -> str:
+        return self.config["output_format"]
+
     def get_target_languages(self) -> list[str]:
         return self.config["languages"]

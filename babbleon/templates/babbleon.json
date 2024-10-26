@@ -1,6 +1,7 @@
 {
   "reference": "./i18n/reference.toml",
   "output": "./i18n/locales/",
+  "output_format": "json",
   "languages": [
     "es",
     "fr",

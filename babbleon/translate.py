@@ -7,8 +7,9 @@ from anthropic import Anthropic
 
 
 class BabbleonTranslator:
-    def __init__(self, reference_raw: str):
+    def __init__(self, reference_raw: str, output_format: str):
         self.reference_raw = reference_raw
+        self.output_format = output_format
         self.anthropic_client = Anthropic()
 
     def parse_reference(self) -> dict:
@@ -18,16 +19,18 @@ class BabbleonTranslator:
         return reference_json
 
     def get_reference_prompt(self) -> str:
-        return f"""<reference.toml>
-{self.reference_raw}
-</reference.toml>
-<reference.json>
-{self.parse_reference()}
-</reference.json>"""
+        reference_prompt = f"""<reference.toml>{self.reference_raw}</reference.toml>"""
+        if self.output_format == "toml":
+            return reference_prompt
+        else:
+            return (
+                reference_prompt
+                + f"""<reference.json>{self.parse_reference()}</reference.json>"""
+            )
 
     def get_system_message(self) -> list[dict]:
         reference_prompt = self.get_reference_prompt()
-        static_prompt_path = files("babbleon.prompts").joinpath("translator.md")
+        static_prompt_path = files("babbleon.prompts").joinpath("translator_json.md")
         with open(static_prompt_path, "r", encoding="utf-8") as src:
             static_prompts = src.read()
         return [
